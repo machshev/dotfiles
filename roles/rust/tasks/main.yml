@@ -23,6 +23,7 @@
     rustup component add rustfmt
     rustup component add rustc-dev
     rustup component add clippy
+    rustup component add rustc-codegen-cranelift-preview --toolchain nightly
 
 - name: Add rust targets
   ansible.builtin.shell: |
@@ -35,4 +36,18 @@
     set -o pipefail
     cargo install cargo-edit
     cargo install cargo-audit
+    cargo install cargo-bloat
+    cargo install cargo-machete
+    cargo install cargo-llvm-lines
+    cargo install cargo-features-manager
+    cargo install bandwhich
+    cargo install basic-http-server
+    cargo install broot
+    cargo install dutree
+    cargo install grex
+    cargo install hexyl
+    cargo install rmesg
+    cargo install rustscan
+    cargo install sd
+    cargo install sk
     cargo install stylua
