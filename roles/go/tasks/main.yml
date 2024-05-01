@@ -1,0 +1,12 @@
+---
+- name: Install Go in Fedora
+  ansible.builtin.command: install-go.sh
+  when: ansible_distribution == "Fedora"
+
+- name: Install Buf in Fedora
+  ansible.builtin.command: install-buf.sh
+  when: ansible_distribution == "Fedora"
+
+- name: Install protobuf in Fedora
+  ansible.builtin.command: install-protobuf.sh
+  when: ansible_distribution == "Fedora"

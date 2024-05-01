@@ -1,0 +1,18 @@
+- name: enable Fedora Copr for Bottom
+  become: true
+  community.general.copr:
+    name: atim/bottom
+    state: enabled
+
+- name: Install CLI utils in Fedora
+  become: true
+  dnf:
+    name:
+      - bat
+      - ranger
+      - bottom
+      - exa
+      - git-delta
+      - ripgrep
+    state: present
+

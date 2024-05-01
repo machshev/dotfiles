@@ -1,0 +1,35 @@
+---
+- name: Bootstrap development environment
+  hosts: localhost
+  tasks:
+    - name: Update all submodules
+      tags:
+        - submodules
+        - nvim
+      command:
+        cmd: git submodule update --force --init --recursive --jobs 4
+      changed_when: false
+
+    - name: Stow dotfiles
+      tags: stow
+      import_role:
+        name: stow
+      changed_when: true
+
+    - name: CLI utils
+      tags: utils
+      import_role:
+        name: utils
+      changed_when: true
+
+    - name: Golang
+      tags: go dev toolchain
+      import_role:
+        name: go
+      changed_when: true
+
+    - name: NeoVIM
+      tags: nvim
+      import_role:
+        name: nvim
+      changed_when: true

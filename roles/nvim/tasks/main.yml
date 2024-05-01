@@ -1,0 +1,8 @@
+---
+- name: Install nvim build dependencies in Fedora
+  become: true
+  dnf:
+    name:
+      - neovim
+    state: present
+  when: ansible_distribution == "Fedora"

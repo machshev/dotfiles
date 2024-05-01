@@ -1,0 +1,5 @@
+---
+- name: Install CLI utils in Fedora
+  import_tasks: fedora.yml
+  when: ansible_distribution == "Fedora"
+
