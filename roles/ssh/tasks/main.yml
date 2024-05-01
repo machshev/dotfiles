@@ -21,3 +21,8 @@
         name: sshd
         state: restarted
       when: update_result.changed is true
+
+    - name: Add Mosh
+      package:
+        name: mosh
+        state: present
