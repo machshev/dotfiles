@@ -9,6 +9,17 @@
   dnf:
     name:
       - bat
+      - dutree
+      - gitui
+      - hyperfine
+      - procs
+      - sd
+      - tealdeer
+      - tokei
+      - tmux
+      - screen
+      - zoxide
+      - skim
       - ranger
       - bottom
       - exa
@@ -16,3 +27,14 @@
       - ripgrep
     state: present
 
+#      - fd
+#      - dust
+#      - ffizer
+#      - git-irbt
+#      - bandwhich
+#      - grex
+#      - broot
+#      - delta
+#      - difft
+#      - bingrep
+#      - basic-http-server

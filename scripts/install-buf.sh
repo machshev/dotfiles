@@ -26,5 +26,3 @@ else
 		echo "Latest version already installed"
 	fi
 fi
-
-"${CONFIG_HOME}/install/install-protobuf.sh"

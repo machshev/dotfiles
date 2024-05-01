@@ -1,0 +1,169 @@
+{
+    // "layer": "top", // Waybar at top layer
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 25, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 8, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces", "sway/workspaces", "sway/mode", "sway/scratchpad", "custom/media"],
+    "modules-center": ["hyprland/window", "sway/window"],
+    "modules-right": ["idle_inhibitor", "pulseaudio", "network", "cpu",
+    "memory", "temperature", "backlight", "keyboard-state","hyprland/language","sway/language", "battery", "battery#bat2", "clock", "tray"],
+    // Modules configuration
+    // "sway/workspaces": {
+    //     "disable-scroll": true,
+    //     "all-outputs": true,
+    //     "warp-on-scroll": false,
+    //     "format": "{name}: {icon}",
+    //     "format-icons": {
+    //         "1": "",
+    //         "2": "",
+    //         "3": "",
+    //         "4": "",
+    //         "5": "",
+    //         "urgent": "",
+    //         "focused": "",
+    //         "default": ""
+    //     }
+    // },
+    "hyprland/workspaces": {
+         "disable-scroll": true,
+         "on-click": "activate",
+         // "all-outputs": false,
+         // "format": "{name}: {icon}",
+         "format": "{name}",
+         "on-scroll-up": "hyprctl dispatch workspace m-1 > /dev/null",
+         "on-scroll-down": "hyprctl dispatch workspace m+1 > /dev/null",
+         "format-icons": {
+             "1": "",
+             "2": "",
+             "3": "",
+             "4": "",
+             "5": "",
+             "urgent": "",
+             "focused": "",
+             "default": ""
+         }
+     },
+     "hyprland/window": {
+        "max-length": 50,
+        "separate-outputs": true
+    },
+    "keyboard-state": {
+        "numlock": true,
+        "capslock": true,
+        "format": "{name} {icon}",
+        "format-icons": {
+            "locked": "",
+            "unlocked": ""
+        }
+    },
+    "sway/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+    "sway/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "deactivated": "😴",
+            "activated": "😵‍💫"
+        }
+    },
+    "tray": {
+        "icon-size": 21,
+        "spacing": 10
+    },
+    "clock": {
+        // "timezone": "America/New_York",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+    "cpu": {
+        "format": "{usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "M:{}%"
+    },
+    "temperature": {
+        "critical-threshold": 80,
+        "format": "{temperatureC}°C",
+        "format-icons": ["", "", ""]
+    },
+    "backlight": {
+        // "device": "acpi_video1",
+        "format": "{percent}% {icon}",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}% {icon}",
+        "format-full": "{capacity}% {icon}",
+        "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-alt": "{time} {icon}",
+        // "format-good": "", // An empty format will hide the module
+        // "format-full": "",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "battery#bat2": {
+        "bat": "BAT2"
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid} ({signalStrength}%)",
+        "format-ethernet": "{ipaddr}/{cidr}",
+        "tooltip-format": "{ifname} via {gwaddr}",
+        "format-linked": "{ifname} (No IP)",
+        "format-disconnected": "Disconnected",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon}{format_source}",
+        "format-bluetooth-muted": "m {icon}{format_source}",
+        "format-muted": "m {format_source}",
+        "format-source": "{volume}%",
+        "format-source-muted": "m",
+        "format-icons": {
+            "headphone": "h",
+            "hands-free": "hf",
+            "headset": "H",
+            "phone": "P",
+            "portable": "p",
+            "car": "C",
+            "default": ["a", "b", "c"]
+        },
+        "on-click": "pavucontrol"
+    },
+    "sway/language": {
+        "format": "{short} {variant}",
+        "on-click": "swaymsg input type:keyboard xkb_switch_layout next",
+    },
+    "hyprland/language": {
+        "format": "{short} {variant}",
+        "max-length": 18
+    },
+    "custom/media": {
+        "format": "{icon} {}",
+        "return-type": "json",
+        "max-length": 40,
+        "format-icons": {
+            "default": "🎜"
+        },
+        "escape": true,
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+    }
+}

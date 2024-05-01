@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# -*- mode:shell-script -*-
+
+BASE_DIR=${PWD}
+
+bold=$(tput bold)
+normal=$(tput sgr0)
+
+for dir in ./*/
+do
+  echo -e "${bold}updating... ${dir}${normal}"
+  cd "$BASE_DIR/$dir"
+  git checkout master
+  git pull
+done

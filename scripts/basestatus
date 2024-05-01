@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# -*- mode:shell-script -*-
+
+set -euf -o pipefail
+
+BASE="${HOME}/base"
+
+echo $BASE
+
+REPOS=$(ls -1 ~/base)
+
+buff=$({ echo "Repo Branch Mod Add Del Rn Cp Up ??" &&
+for r in $REPOS; do
+    base_src=${BASE}/${r}
+    
+    cd ${base_src}
+
+    branch=$(git branch | grep \* | cut -d " " -f 2)
+    changes=$(git status -s)
+
+    M=$(echo "$changes" | grep ' M ' | wc -l)    
+    A=$(echo "$changes" | grep ' A ' | wc -l)
+    D=$(echo "$changes" | grep ' D ' | wc -l)
+    R=$(echo "$changes" | grep ' R ' | wc -l)
+    C=$(echo "$changes" | grep ' C ' | wc -l)
+    U=$(echo "$changes" | grep ' U ' | wc -l)
+    UT=$(echo "$changes" | grep '?? ' | wc -l)
+
+    tmp=''
+    
+    if [ $M = 0 ];  then tmp+='- '; else tmp+="${M} "; fi
+    if [ $A = 0 ];  then tmp+='- '; else tmp+="${A} "; fi
+    if [ $D = 0 ];  then tmp+='- '; else tmp+="${D} "; fi
+    if [ $R = 0 ];  then tmp+='- '; else tmp+="${R} "; fi
+    if [ $C = 0 ];  then tmp+='- '; else tmp+="${C} "; fi
+    if [ $U = 0 ];  then tmp+='- '; else tmp+="${U} "; fi
+    if [ $UT = 0 ]; then tmp+='-';  else tmp+="${UT}"; fi
+    
+    echo "$r $branch $tmp"
+    
+done } | column -t)
+
+echo -e "$buff" \
+    | sed -r -e '1s/^(.*)$/\\e[1m\1\\e[0m/' \
+          -e '2,$s/\s([0-9]+)/ \\e[91m\1\\e[0m/g' \
+          -e '2,$s/^(\S+)(\s+\S+\s+.*[0-9]+.*)/\\e[93m\1\\e[0m\2/' \
+    | xargs -0 echo -e
+
+#'1s/^(.*)$/\\e\[1m\1\\e\[0m/' \

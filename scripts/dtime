@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+import argparse
+from datetime import datetime
+
+parser = argparse.ArgumentParser(prog='Delta time')
+parser.add_argument('t1', type=str)
+parser.add_argument('t2', type=str, nargs='?', default='')
+
+args = parser.parse_args()
+
+now = datetime.now()
+
+
+def get_datetime(time: str):
+    parsed = datetime.strptime(time, '%H:%M')
+    return datetime(now.year, now.month, now.day, parsed.hour, parsed.minute)
+
+
+t2 = now
+if args.t2:
+    t2 = get_datetime(args.t2)
+
+t1 = get_datetime(args.t1)
+
+print(str(t2 - t1))

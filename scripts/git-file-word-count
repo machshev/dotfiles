@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# -*- mode:shell-script -*-
+
+function usage(){
+  echo "git-file-word-count [commits] [filename]"
+  echo
+  echo "Count the number of words in a file for each commit"
+}
+
+if [ -z "$1" ] ; then
+  usage
+  echo "Please specify a commit range HASH..HASH"
+  exit
+fi
+
+if [ -z "$2" ] ; then
+  usage
+  echo "Please specify a filename"
+  exit
+fi
+
+
+COMMIT_RANGE=${1}
+FILE_NAME=${2}
+
+COMMITS=$(git log --pretty=format:"%h#%aI" ${COMMIT_RANGE})
+HEAD=$(git log --pretty=format:"%h" -1)
+
+for c in ${COMMITS}; do
+  # Get the hashes & dates for the commits
+  IFS='#' C=($c)
+  short_hash=${C[0]}
+  date=${C[1]}
+
+  git checkout -q ${short_hash}
+
+  if [ -e ${FILE_NAME} ] ; then
+    word_count=$(wc -w ${FILE_NAME} | cut -d ' ' -f 1)
+  else
+    word_count='0'
+  fi
+
+  echo "${short_hash} ${date} ${word_count}"
+done
+
+# Go back to where we were
+git checkout -q ${HEAD}

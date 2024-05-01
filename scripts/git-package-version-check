@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+PACKAGE_NAME=$(python setup.py --name)
+USER="$(grep username pypirc | cut -d ' ' -f 3)"
+PASSWORD="$(grep password pypirc | cut -d ' ' -f 3)"
+
+PACKAGE_VERSION=$(curl -k "https://${USER}:${PASSWORD}@pypi.aws.agileanalog.com/api/package/${PACKAGE_NAME}/" 2> /dev/null | jq '.packages[0].version')
+
+REPO_VERSION=$(ads-get-repo-version)
+
+echo "${REPO_VERSION} ${PACKAGE_VERSION}"

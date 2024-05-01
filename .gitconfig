@@ -1,0 +1,56 @@
+[user]
+	email = djmccorrie@gmail.com
+	name = David James McCorrie
+
+[pull]
+    rebase = true
+
+[core]
+    editor = nvim
+	pager = delta
+
+[interactive]
+	diffFilter = delta --color-only
+
+[delta]
+	features = side-by-side line-numbers decorations
+    syntax-theme = Dracula
+    plus-style = syntax "#003800"
+    minus-style = syntax "#3f0001"
+    navigate = true
+	whitespace-error-style = 22 reverse
+    blame-palette = "#000000 #202020 #505050"
+
+[delta "decorations"]
+    commit-decoration-style = bold yellow box ul
+    file-style = bold yellow ul
+    file-decoration-style = none
+    hunk-header-decoration-style = cyan box ul
+
+[delta "line-numbers"]
+    line-numbers-left-style = cyan
+    line-numbers-right-style = cyan
+    line-numbers-minus-style = 124
+    line-numbers-plus-style = 28
+
+[sequence]
+	editor = interactive-rebase-tool
+
+[diff]
+    tool = nvimdiff
+    guitool = nvimdiff
+
+[difftool]
+    prompt = false
+
+[merge]
+    tool = nvimdiff
+    conflictstyle = diff3
+
+[mergetool]
+    keepBackup = false
+    trustExitCode = false
+    prompt = true
+
+[mergetool "nvimdiff"]
+    layout = LOCAL,MERGED,REMOTE

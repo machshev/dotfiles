@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+"""Script to debug problems with namespace packages.
+Set the PACKAGE variable below and run this script with the same Python you're having problems with.
+"""
+import glob
+import os
+import sys
+
+# Set this to the name of the namespace package you're having problems with
+PACKAGE = sys.argv[1]
+
+try:
+    mod = __import__(PACKAGE)
+except ImportError:
+    print("Could not import", PACKAGE)
+    mod = None
+else:
+    print("mod:", mod)
+print()
+
+try:
+    path = mod.__path__
+except AttributeError:
+    print("No attribute __path__")
+else:
+    print("%s.__path__ = %r" % (PACKAGE, path))
+
+for directory in sys.path:
+    candidate = os.path.join(directory, PACKAGE)
+    if os.path.isdir(candidate):
+        print()
+        print("-- Found", candidate, '--')
+        print("Files:", sorted(os.listdir(candidate)))
+        init_py = os.path.join(candidate, '__init__.py')
+        if os.path.isfile(init_py):
+            print('__init__.py contains:')
+            with open(init_py, 'r') as f:
+                print(f.read())
+        else:
+            print('No __init__.py found')
+
+    pkg_files = glob.glob(os.path.join(directory, '*.pkg'))
+    for pkg_file in pkg_files:
+        print()
+        print("-- Found pkg file:", pkg_file, '--')
+        with open(pkg_file, 'r') as f:
+            print(f.read())
