@@ -1,0 +1,10 @@
+---
+- name: Install C/C++ toolchains in Fedora
+  become: true
+  dnf:
+    name:
+      - php
+      - php-cli
+      - composer
+    state: present
+  when: ansible_distribution == "Fedora"

@@ -454,3 +454,4 @@ if command -v fzf >/dev/null; then
 
 	_fzf_setup_completion path npm
 fi
+. "$HOME/.cargo/env"

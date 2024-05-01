@@ -28,6 +28,18 @@
         name: basic
       changed_when: true
 
+    - name: C/C++
+      tags: c cpp dev toolchain
+      import_role:
+        name: c
+      changed_when: true
+
+    - name: Rust
+      tags: rust dev toolchain
+      import_role:
+        name: rust
+      changed_when: true
+
     - name: Golang
       tags: go dev toolchain
       import_role:
@@ -38,4 +50,10 @@
       tags: nvim
       import_role:
         name: nvim
+      changed_when: true
+
+    - name: SSH
+      tags: ssh
+      import_role:
+        name: ssh
       changed_when: true

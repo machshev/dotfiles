@@ -15,6 +15,7 @@
   loop:
     - .bashrc
     - .bash_profile
+    - .gitconfig
   ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/{{ item }}"
     state: absent
