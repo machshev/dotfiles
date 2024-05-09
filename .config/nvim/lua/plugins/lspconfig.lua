@@ -109,6 +109,7 @@ return {
         lsp_plugin.bashls.setup({ capabilities = capabilities })
         lsp_plugin.yamlls.setup({ capabilities = capabilities })
 
+        lsp_plugin.ruff.setup({ capabilities = capabilities })
         lsp_plugin.pylsp.setup({
             capabilities = capabilities,
             flags = {

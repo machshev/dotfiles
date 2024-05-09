@@ -34,6 +34,12 @@
         name: c
       changed_when: true
 
+    - name: Python
+      tags: python dev toolchain
+      import_role:
+        name: python
+      changed_when: true
+
     - name: Rust
       tags: rust dev toolchain
       import_role:
@@ -44,6 +50,12 @@
       tags: go dev toolchain
       import_role:
         name: go
+      changed_when: true
+
+    - name: PHP
+      tags: php dev toolchain
+      import_role:
+        name: php
       changed_when: true
 
     - name: NeoVIM

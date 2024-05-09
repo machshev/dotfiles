@@ -11,6 +11,9 @@
       - openssl
       - openssl-devel
       - musl-*
+      - gdb
+      - openocd
+      - qemu-system-arm
     state: present
 
 - name: Add rustup components
@@ -23,6 +26,7 @@
     rustup component add rustfmt
     rustup component add rustc-dev
     rustup component add clippy
+    rustup component add llvm-tools-preview
     rustup component add rustc-codegen-cranelift-preview --toolchain nightly
 
 - name: Add rust targets
@@ -30,11 +34,17 @@
     set -o pipefail
     rustup target add x86_64-unknown-linux-musl
     rustup target add wasm32-unknown-emscripten
+    rustup target add thumbv6m-none-eabi
+    rustup target add thumbv7m-none-eabi
+    rustup target add thumbv7em-none-eabi
+    rustup target add thumbv7em-none-eabihf
 
 - name: Install cargo tools
   ansible.builtin.shell: |
     set -o pipefail
+    cargo install cargo-binutils
     cargo install cargo-edit
+    cargo install cargo-generate
     cargo install cargo-audit
     cargo install cargo-bloat
     cargo install cargo-machete
@@ -51,3 +61,5 @@
     cargo install sd
     cargo install sk
     cargo install stylua
+
+# TODO: add udev rules

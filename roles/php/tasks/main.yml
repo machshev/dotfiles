@@ -1,5 +1,5 @@
 ---
-- name: Install C/C++ toolchains in Fedora
+- name: Install PHP toolchains in Fedora
   become: true
   dnf:
     name:
