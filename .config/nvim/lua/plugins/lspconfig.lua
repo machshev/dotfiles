@@ -66,7 +66,7 @@ return {
                 'lua_ls',
                 'clangd',
                 'rust_analyzer',
-                'asm_lsp',
+                --'asm_lsp',
                 'cssls',
                 'bufls',
                 'ansiblels',
@@ -84,13 +84,13 @@ return {
                 'html',
                 'htmx',
                 'pylsp',
-                'phpactor',
+                --'phpactor',
             },
         })
 
         -- servers
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        lsp_plugin.typos_lsp.setup({ capabilities = capabilities })
+        -- lsp_plugin.typos_lsp.setup({ capabilities = capabilities })
 
         lsp_plugin.lua_ls.setup({
             capabilities = capabilities,
@@ -171,7 +171,7 @@ return {
         })
 
         lsp_plugin.cssls.setup({ capabilities = capabilities })
-        lsp_plugin.phpactor.setup({ capabilities = capabilities })
+        -- lsp_plugin.phpactor.setup({ capabilities = capabilities })
         lsp_plugin.htmx.setup({
             filetypes = { 'html', 'php' },
         })
