@@ -96,7 +96,7 @@ mods = "Control"
 
 [shell]
 args = ["--login"]
-program = "/bin/bash"
+program = "bash"
 
 [window]
 decorations = "none"
