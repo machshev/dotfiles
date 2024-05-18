@@ -61,6 +61,7 @@ fi
 # Add Rust related PATH
 if [ -d "$HOME/.cargo/env" ]; then
 	export PATH="$PATH:$HOME/.cargo/env"
+	. "$HOME/.cargo/env"
 fi
 
 # Add Homebrew
@@ -127,4 +128,7 @@ if [ -n "$BASH_VERSION" ]; then
 		source "$HOME/.bashrc"
 	fi
 fi
-. "$HOME/.cargo/env"
+
+if [ -e "$HOME/.nix-profile/etc/profile.d/nix.sh" ]; then
+	source "$HOME/.nix-profile/etc/profile.d/nix.sh"
+fi # added by Nix installer

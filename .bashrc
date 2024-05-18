@@ -39,22 +39,11 @@ case "$TERM" in
 xterm-color | *-256color) color_prompt=yes ;;
 esac
 
-# source git file containing __git_ps1 function
-if [ -f /usr/lib/git-core/git-sh-prompt ]; then
-	source /usr/lib/git-core/git-sh-prompt
-elif [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ]; then
-	source /usr/share/git-core/contrib/completion/git-prompt.sh
+# Source the git bash completion file
+if [ -f ~/.git-completion.bash ]; then
+	source ~/.git-completion.bash
+	source ~/.git-prompt.sh
 fi
-
-export PS1='\
-\[\e[1;32m\]\u \
-\[\e[1;33m\]@ \
-\[\e[1;94m\]\w \
-\[\e[1;33m\]$(__git_ps1 "(%s) ")\
-\[\e[1;32m\]$([ \j -gt 0 ] && echo "* ")\
-\[\e[1;90m\]\$ \
-\[\e[0m\]\
-'
 
 export PROMPT_COMMAND="history -a"
 
@@ -301,10 +290,10 @@ if command -v zoxide >/dev/null; then
 fi
 
 # rust powered utils
-if command -v exa >/dev/null; then
-	alias ls="exa -g"
-	alias x='exa'
-	alias tree='exa --tree'
+if command -v eza >/dev/null; then
+	alias ls="eza -g"
+	alias x='eza'
+	alias tree='eza --tree'
 fi
 
 if command -v hyperfine >/dev/null; then
@@ -407,11 +396,11 @@ SSH_ENV=$HOME/.ssh/environment
 
 function start_agent {
 	echo "Initialising new SSH agent..."
-	/usr/bin/ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
+	ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
 	echo succeeded
 	chmod 600 "${SSH_ENV}"
 	source "${SSH_ENV}" >/dev/null
-	/usr/bin/ssh-add
+	ssh-add
 }
 
 # Source SSH settings, if applicable
@@ -441,6 +430,8 @@ fi
 
 # configure fzf
 if command -v fzf >/dev/null; then
+	export FZF_COMPLETION_TRIGGER='~~'
+	export FZF_COMPLETION_OPTS='--border --info=inline'
 	export FZF_DEFAULT_COMMAND="rg --files --hidden"
 	export FZF_ALT_C_COMMAND="fd --type d"
 
@@ -452,6 +443,11 @@ if command -v fzf >/dev/null; then
 		fd --type d --hidden --folow --exclude ".git" . "$1"
 	}
 
-	_fzf_setup_completion path npm
+	# _fzf_setup_completion path npm
 fi
-. "$HOME/.cargo/env"
+
+eval "$(starship init bash)"
+
+if [ -f "$HOME/.cargo/env" ]; then
+	. "$HOME/.cargo/env"
+fi

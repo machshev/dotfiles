@@ -21,6 +21,23 @@ return {
                         require('telescope.themes').get_dropdown(),
                     },
                 },
+                defaults = {
+                    vimgrep_arguments = {
+                        'rg',
+                        '--color=never',
+                        '--no-heading',
+                        '--with-filename',
+                        '--line-number',
+                        '--column',
+                        '--smart-case',
+                        '-u',
+                    },
+                },
+                pickers = {
+                    additional_args = function(opts)
+                        return {"--hidden"}
+                    end
+                },
             }
 
             -- Enable Telescope extensions if they are installed
@@ -83,14 +100,14 @@ return {
             {
                 '<leader>sB',
                 ':Telescope file_browser<CR>',
-                desc = '[S]earch [F]ile browser (cwd)',
+                desc = '[S]earch File [B]rowser (cwd)',
                 noremap = true,
                 silent = true,
             },
             {
                 '<leader>sb',
                 ':Telescope file_browser path=%:p:h select_buffer=true<CR>',
-                desc = 'File browser (buffer path)',
+                desc = '[S]earch File browser ([b]uffer path)',
                 noremap = true,
                 silent = true,
             },
