@@ -1,13 +1,13 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 echo " * Cleaning working directory"
 rm -frv ./*~ ./.#* ./#*# ./.*~
 
 REPO_TOPLEVEL_DIR=$(git rev-parse --show-toplevel)
 
-if [ -d "$REPO_TOPLEVEL_DIR" ] ; then
-  echo " * Cleaning GIT repo"
-  
-  find "$REPO_TOPLEVEL_DIR" -not \( -path "$REPO_TOPLEVEL_DIR/.git" -prune \) -regex '.*\.?#.*#?$' -print -exec rm -rf {} \;
-  find "$REPO_TOPLEVEL_DIR" -not \( -path "$REPO_TOPLEVEL_DIR/.git" -prune \) -regex '.*~$' -print -exec rm -rf {} \;
+if [ -d "$REPO_TOPLEVEL_DIR" ]; then
+	echo " * Cleaning GIT repo"
+
+	find "$REPO_TOPLEVEL_DIR" -not \( -path "$REPO_TOPLEVEL_DIR/.git" -prune \) -regex '.*\.?#.*#?$' -print -exec rm -rf {} \;
+	find "$REPO_TOPLEVEL_DIR" -not \( -path "$REPO_TOPLEVEL_DIR/.git" -prune \) -regex '.*~$' -print -exec rm -rf {} \;
 fi
