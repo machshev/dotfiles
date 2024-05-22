@@ -129,7 +129,7 @@
   users.users.david = {
     isNormalUser = true;
     description = "David James McCorrie";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "video" "kvm"];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "video" "kvm" "docker"];
     packages = with pkgs; [
     #  thunderbird
     ];
@@ -142,6 +142,8 @@
     };
   };
 
+  virtualisation.docker.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -149,6 +151,7 @@
     starship
     stow
     blueman
+    docker-compose
     fzf
     fd
     bandwhich
@@ -231,6 +234,8 @@
     conky
     xclip
     unzip
+    gnome3.nautilus
+    libreoffice
   ];
 
   fonts.fontDir.enable = true;

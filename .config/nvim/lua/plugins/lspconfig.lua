@@ -84,7 +84,7 @@ return {
                 'html',
                 'htmx',
                 'pylsp',
-                --'phpactor',
+                'phpactor',
             },
         })
 
@@ -171,7 +171,7 @@ return {
         })
 
         lsp_plugin.cssls.setup({ capabilities = capabilities })
-        -- lsp_plugin.phpactor.setup({ capabilities = capabilities })
+        lsp_plugin.phpactor.setup({ capabilities = capabilities })
         lsp_plugin.htmx.setup({
             filetypes = { 'html', 'php' },
         })
