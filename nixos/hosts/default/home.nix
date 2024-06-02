@@ -4,6 +4,7 @@
   imports = [
     ./hyperland.nix
     ./term.nix
+    ./dev.nix
   ];
 
 

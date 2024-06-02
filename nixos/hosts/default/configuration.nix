@@ -148,25 +148,16 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     ansible
-    asm-lsp
-    cargo
     clang
     conky
-    docker-compose
     gcc
-    git
-    go
     gparted
     maim
     ninja
-    nodejs
     openssl.dev
-    php
-    phpactor
     qt5.qtwayland
     qt6.qmake
     qt6.qtwayland
-    rustc
     tokei
     typos-lsp
     v4l-utils
