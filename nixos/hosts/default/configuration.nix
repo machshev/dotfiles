@@ -147,95 +147,35 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    alacritty
-    starship
-    stow
-    blueman
-    docker-compose
-    fzf
-    fd
-    bandwhich
-    grex
-    broot
-    delta
-    bingrep
-    #basic-http-server
-    git
-    gnome3.cheese
-    vlc
-    bat
-    dutree
-    gitui
-    hyperfine
-    tokei
-    tealdeer
-    ripgrep
-    tmux
-    procs
-    ranger
-    skim
-    screen
-    zoxide
-    bottom
-    eza
-    #git-delta
-    nodejs
-    gcc
+    ansible
+    asm-lsp
+    cargo
     clang
+    conky
+    docker-compose
+    gcc
+    git
     go
+    gparted
+    maim
+    ninja
+    nodejs
+    openssl.dev
     php
     phpactor
-    asm-lsp
-    typos-lsp
-    cargo
-    rustc
-    openssl.dev
-    mosh
-    neovim
-    firefox-wayland
-    wlr-randr
-    wl-clipboard
-    waybar
-    wget
-    wayvnc
-    xwayland
-    hyprland-protocols
-    hyprpicker
-    swayidle
-    swaylock
-    xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
-    xdg-utils
-    hyprpaper
-    wofi
-    wlroots
     qt5.qtwayland
     qt6.qmake
     qt6.qtwayland
-    gparted
-    gimp
-    ansible
+    rustc
+    tokei
+    typos-lsp
     v4l-utils
-    #speech-dispatcher
-    #speech-dispatcher-utils
-    ydotool
+    vlc
+    wayvnc
+    wlr-randr
+    wlroots
     xdotool
-    grim
-    slurp
-    bemenu
-    inkscape
-    blender
-    ninja
-    dunst
-    #xbacklight
-    feh
-    conky
-    maim
-    conky
-    xclip
-    unzip
-    gnome3.nautilus
-    libreoffice
+    xwayland
   ];
 
   fonts.fontDir.enable = true;
