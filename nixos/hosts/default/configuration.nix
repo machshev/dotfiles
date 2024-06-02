@@ -48,6 +48,10 @@
 
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.substituters = [
+    "https://cache.nixos.org/"
+    "https://nix-cache.lowrisc.org/public/"
+  ];
 
   # NVIDIA
   nixpkgs.config.nvidia.acceptLicense = true;
