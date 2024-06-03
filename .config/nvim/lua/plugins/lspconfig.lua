@@ -18,75 +18,74 @@ return {
             },
         },
         'hrsh7th/cmp-nvim-lsp',
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim',
-        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        -- 'williamboman/mason.nvim',
+        -- 'williamboman/mason-lspconfig.nvim',
+        -- 'WhoIsSethDaniel/mason-tool-installer.nvim',
         'rmagatti/goto-preview',
         { 'folke/neodev.nvim', opts = {} },
     },
     config = function()
         local lsp_plugin = require('lspconfig')
 
-        require('mason').setup({
-            ui = {
-                icons = {
-                    package_installed = '✓',
-                    package_pending = '➜',
-                    package_uninstalled = '✗',
-                },
-            },
-        })
+        -- require('mason').setup({
+        --     ui = {
+        --         icons = {
+        --             package_installed = '✓',
+        --             package_pending = '➜',
+        --             package_uninstalled = '✗',
+        --         },
+        --     },
+        -- })
 
-        local mason_tool_installer = require('mason-tool-installer')
+        -- local mason_tool_installer = require('mason-tool-installer')
 
-        mason_tool_installer.setup({
-            ensure_installed = {
-                'prettier', -- prettier formatter
-                'stylua', -- lua formatter
-                'isort', -- python formatter
-                'black', -- python formatter
-                'pylint', -- python linter
-                'eslint_d', -- js linter
-                'shellcheck',
-                'shfmt',
-                'mypy',
-                'ruff',
-                'biome',
-                'buf',
-                'markdownlint',
-                'pylint',
-                'jedi-language-server',
-            },
-        })
+        -- mason_tool_installer.setup({
+        --     ensure_installed = {
+        --         'biome',
+        --         'black', -- python formatter
+        --         'buf',
+        --         'eslint_d', -- js linter
+        --         'isort', -- python formatter
+        --         'jedi-language-server',
+        --         'markdownlint',
+        --         'mypy',
+        --         'prettier', -- prettier formatter
+        --         'pylint', -- python linter
+        --         'ruff',
+        --         'shellcheck',
+        --         'shfmt',
+        --         'stylua', -- lua formatter
+        --     },
+        -- })
 
-        require('mason-lspconfig').setup({
-            automatic_installation = true,
-            ensure_installed = {
-                'typos_lsp',
-                'lua_ls',
-                'clangd',
-                'rust_analyzer',
-                --'asm_lsp',
-                'cssls',
-                'bufls',
-                'ansiblels',
-                'bashls',
-                'sqlls',
-                'yamlls',
-                'zk',
-                'helm_ls',
-                'dockerls',
-                'docker_compose_language_service',
-                'arduino_language_server',
-                'gopls',
-                'tsserver',
-                'eslint',
-                'html',
-                'htmx',
-                'pylsp',
-                'phpactor',
-            },
-        })
+        -- require('mason-lspconfig').setup({
+        --     automatic_installation = true,
+        --     ensure_installed = {
+        --         'ansiblels',
+        --         'arduino_language_server',
+        --         'bashls',
+        --         'bufls',
+        --         'clangd',
+        --         'cssls',
+        --         'docker_compose_language_service',
+        --         'dockerls',
+        --         'eslint',
+        --         'gopls',
+        --         'helm_ls',
+        --         'html',
+        --         'htmx',
+        --         'lua_ls',
+        --         'phpactor',
+        --         'pylsp',
+        --         'rust_analyzer',
+        --         'sqlls',
+        --         'tsserver',
+        --         'typos_lsp',
+        --         'yamlls',
+        --         'zk',
+        --         --'asm_lsp',
+        --     },
+        -- })
 
         -- servers
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -122,7 +121,7 @@ return {
                         black = { enabled = true },
                         autopep8 = { enabled = false },
                         yapf = { enabled = false },
-                        ruff = { enabled = true },
+                        ruff = { enabled = true, executable = 'ruff'},
                         -- linter options
                         pylint = { enabled = false, executable = 'pylint' },
                         pyflakes = { enabled = false },
