@@ -1,28 +1,31 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, inputs, ... }:
-
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   fileSystems = {
-    "/".options = [ "compress=zstd" ];
-    "/home".options = [ "compress=zstd" ];
-    "/nix".options = [ "compress=zstd" "noatime" ];
+    "/".options = ["compress=zstd"];
+    "/home".options = ["compress=zstd"];
+    "/nix".options = ["compress=zstd" "noatime"];
     #"/swap".options = [ "noatime" ];
   };
 
   services.btrfs.autoScrub = {
     enable = true;
     interval = "monthly";
-    fileSystems = [ "/" ];
+    fileSystems = ["/"];
   };
 
   networking.hostName = "machshev";
@@ -47,7 +50,7 @@
   };
 
   nixpkgs.config.allowUnfree = true;
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.substituters = [
     "https://cache.nixos.org/"
     "https://nix-cache.lowrisc.org/public/"
@@ -68,7 +71,7 @@
     open = false;
   };
 
-  services.xserver.videoDrivers = [ "modesetting" "nvidiaLegacy470" ];
+  services.xserver.videoDrivers = ["modesetting" "nvidiaLegacy470"];
 
   # X11
   services.xserver.enable = true;
@@ -77,7 +80,6 @@
   services.xserver.xkb.variant = "";
 
   services.xserver.displayManager.lightdm.enable = true;
-
 
   # Hyprland
   programs.hyprland.enable = true;
@@ -133,16 +135,16 @@
   users.users.david = {
     isNormalUser = true;
     description = "David James McCorrie";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "video" "kvm" "docker"];
+    extraGroups = ["networkmanager" "wheel" "dialout" "video" "kvm" "docker"];
     packages = with pkgs; [
-    #  thunderbird
+      #  thunderbird
     ];
   };
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = {inherit inputs;};
     users = {
-        "david" = import ./home.nix;
+      "david" = import ./home.nix;
     };
   };
 
@@ -233,5 +235,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "23.11"; # Did you read the comment?
-
 }
