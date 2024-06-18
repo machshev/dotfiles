@@ -89,7 +89,8 @@ return {
 
         -- servers
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        -- lsp_plugin.typos_lsp.setup({ capabilities = capabilities })
+
+        lsp_plugin.typos_lsp.setup({ capabilities = capabilities })
 
         lsp_plugin.lua_ls.setup({
             capabilities = capabilities,
