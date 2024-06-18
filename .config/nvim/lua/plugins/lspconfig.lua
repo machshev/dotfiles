@@ -105,8 +105,12 @@ return {
             },
         })
 
+        lsp_plugin.terraformls.setup({ capabilities = capabilities })
         lsp_plugin.bashls.setup({ capabilities = capabilities })
         lsp_plugin.yamlls.setup({ capabilities = capabilities })
+
+        lsp_plugin.nil_ls.setup({ capabilities = capabilities })
+        lsp_plugin.veridian.setup({ capabilities = capabilities })
 
         lsp_plugin.ruff.setup({ capabilities = capabilities })
         lsp_plugin.pylsp.setup({
@@ -121,7 +125,7 @@ return {
                         black = { enabled = true },
                         autopep8 = { enabled = false },
                         yapf = { enabled = false },
-                        ruff = { enabled = true, executable = 'ruff'},
+                        ruff = { enabled = true, executable = 'ruff' },
                         -- linter options
                         pylint = { enabled = false, executable = 'pylint' },
                         pyflakes = { enabled = false },
@@ -177,12 +181,12 @@ return {
 
         local gtp = require('goto-preview')
         gtp.setup({
-            width = 120, -- Width of the floating window
-            height = 25, -- Height of the floating window
+            width = 120,              -- Width of the floating window
+            height = 25,              -- Height of the floating window
             default_mappings = false, -- Bind default mappings
-            debug = false, -- Print debug information
-            opacity = nil, -- 0-100 opacity level of the floating window where 100 is fully transparent.
-            post_open_hook = nil, -- A function taking two arguments, a buffer and a window to be ran as a hook.
+            debug = false,            -- Print debug information
+            opacity = nil,            -- 0-100 opacity level of the floating window where 100 is fully transparent.
+            post_open_hook = nil,     -- A function taking two arguments, a buffer and a window to be ran as a hook.
             -- You can use "default_mappings = true" setup option
             -- Or explicitly set keybindings
             -- vim.cmd("nnoremap gpd <cmd>lua require('goto-preview').goto_preview_definition()<CR>")
