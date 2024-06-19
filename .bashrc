@@ -447,6 +447,7 @@ if command -v fzf >/dev/null; then
 fi
 
 eval "$(starship init bash)"
+eval "$(direnv hook bash)"
 
 if [ -f "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"

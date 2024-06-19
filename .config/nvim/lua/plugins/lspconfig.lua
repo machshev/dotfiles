@@ -26,68 +26,6 @@ return {
     },
     config = function()
         local lsp_plugin = require('lspconfig')
-
-        -- require('mason').setup({
-        --     ui = {
-        --         icons = {
-        --             package_installed = '✓',
-        --             package_pending = '➜',
-        --             package_uninstalled = '✗',
-        --         },
-        --     },
-        -- })
-
-        -- local mason_tool_installer = require('mason-tool-installer')
-
-        -- mason_tool_installer.setup({
-        --     ensure_installed = {
-        --         'biome',
-        --         'black', -- python formatter
-        --         'buf',
-        --         'eslint_d', -- js linter
-        --         'isort', -- python formatter
-        --         'jedi-language-server',
-        --         'markdownlint',
-        --         'mypy',
-        --         'prettier', -- prettier formatter
-        --         'pylint', -- python linter
-        --         'ruff',
-        --         'shellcheck',
-        --         'shfmt',
-        --         'stylua', -- lua formatter
-        --     },
-        -- })
-
-        -- require('mason-lspconfig').setup({
-        --     automatic_installation = true,
-        --     ensure_installed = {
-        --         'ansiblels',
-        --         'arduino_language_server',
-        --         'bashls',
-        --         'bufls',
-        --         'clangd',
-        --         'cssls',
-        --         'docker_compose_language_service',
-        --         'dockerls',
-        --         'eslint',
-        --         'gopls',
-        --         'helm_ls',
-        --         'html',
-        --         'htmx',
-        --         'lua_ls',
-        --         'phpactor',
-        --         'pylsp',
-        --         'rust_analyzer',
-        --         'sqlls',
-        --         'tsserver',
-        --         'typos_lsp',
-        --         'yamlls',
-        --         'zk',
-        --         --'asm_lsp',
-        --     },
-        -- })
-
-        -- servers
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         lsp_plugin.typos_lsp.setup({ capabilities = capabilities })
@@ -107,6 +45,9 @@ return {
         })
 
         lsp_plugin.terraformls.setup({ capabilities = capabilities })
+
+        lsp_plugin.ansiblels.setup({ capabilities = capabilities })
+
         lsp_plugin.bashls.setup({ capabilities = capabilities })
         lsp_plugin.yamlls.setup({ capabilities = capabilities })
 
