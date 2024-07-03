@@ -57,13 +57,9 @@
   ];
 
   # NVIDIA
-  nixpkgs.config.nvidia.acceptLicense = true;
+  hardware.graphics.enable = true;
 
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
-  };
+  nixpkgs.config.nvidia.acceptLicense = true;
 
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
@@ -197,7 +193,6 @@
     ];
   };
 
-  services.tailscale.enable = true;
 
   environment.sessionVariables = {
     POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
@@ -223,6 +218,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.tailscale.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
