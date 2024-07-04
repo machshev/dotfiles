@@ -131,7 +131,7 @@
   users.users.david = {
     isNormalUser = true;
     description = "David James McCorrie";
-    extraGroups = ["networkmanager" "wheel" "dialout" "video" "kvm" "docker"];
+    extraGroups = ["networkmanager" "wheel" "dialout" "tty" "video" "kvm" "docker"];
     packages = with pkgs; [
       #  thunderbird
     ];

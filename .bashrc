@@ -67,7 +67,7 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-alias ss="sudo env HOME=\"$HOME\" bash"
+alias SS="sudo env HOME=\"$HOME\" bash"
 alias watch="watch -c"
 
 alias tmux="TERM=screen-256color tmux -2"
