@@ -26,8 +26,9 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
+    direnv
     firefox-wayland
-    gnome3.cheese
+    cheese
     gimp
     inkscape
     libreoffice

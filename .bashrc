@@ -407,17 +407,6 @@ function start_agent {
 
 [[ $TERM == "tramp" ]] && unsetopt zle && PS1='$ ' && return
 
-if [[ $- == *i* ]]; then
-	if [ -f "${SSH_ENV}" ]; then
-		source "${SSH_ENV}" >/dev/null
-		ps "${SSH_AGENT_PID}" | grep ssh-agent$ >/dev/null || {
-			start_agent
-		}
-	else
-		start_agent
-	fi
-fi
-
 # configure tmux
 if [ -f ~/.tmux/tmux_bash_completion ]; then
 	source "$HOME/.tmux/tmux_bash_completion"

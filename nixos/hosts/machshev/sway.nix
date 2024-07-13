@@ -1,16 +1,14 @@
 {
   config,
-  pkgs,
+  pkgsbar,
   ...
 }: {
   home.packages = with pkgs; [
-    hyperfine
-    hyprland-protocols
-    hyprpaper
-    hyprpicker
+    # TODO: pull out common config with hyprland
     brightnessctl
     playerctl
     blueman
+    nitrogen
     dunst
     dolphin
     wofi
@@ -19,11 +17,16 @@
     swaylock
     waybar
     xdg-desktop-portal-gtk
-    xdg-desktop-portal-hyprland
+    xdg-desktop-portal-wlr
     xdg-utils
     ydotool
     wl-clipboard
-    gnome3.nautilus
+    nautilus
     pavucontrol
+
+    # TODO: Split these out
+    nwg-displays
+    nwg-bar
+    nwg-panel
   ];
 }

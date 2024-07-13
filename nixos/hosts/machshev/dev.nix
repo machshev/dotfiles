@@ -8,7 +8,7 @@
     cargo
     nodejs
     php
-    phpactor
+    # phpactor
     rustc
     rust-analyzer
     python312Packages.python-lsp-server

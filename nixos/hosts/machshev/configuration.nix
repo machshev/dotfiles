@@ -14,6 +14,7 @@
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   fileSystems = {
     "/".options = ["compress=zstd"];
@@ -49,6 +50,12 @@
     LC_TIME = "en_GB.UTF-8";
   };
 
+  hardware.enableRedistributableFirmware = true;
+
+  nix.gc.automatic = true;
+  xdg.portal.enable = true;
+  programs.dconf.enable = true;
+
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.substituters = [
@@ -59,27 +66,52 @@
   # NVIDIA
   hardware.graphics.enable = true;
 
+  # environment.systemPackages = [ nvidia-offload ];
+  services.xserver.videoDrivers = ["nvidia"];
+
   nixpkgs.config.nvidia.acceptLicense = true;
+  programs.sway.extraOptions = [ "--unsupported-gpu" ];
 
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
     modesetting.enable = true;
+
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    forceFullCompositionPipeline = true;
+
     open = false;
+
+    nvidiaSettings = true;
+
+    package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
 
-  services.xserver.videoDrivers = ["modesetting" "nvidiaLegacy470"];
 
   # X11
   services.xserver.enable = true;
 
-  services.xserver.xkb.layout = "us";
+  services.xserver.xkb.layout = "us,gb,il";
   services.xserver.xkb.variant = "";
 
-  services.xserver.displayManager.lightdm.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
 
   # Hyprland
   programs.hyprland.enable = true;
   programs.hyprland.xwayland.enable = true;
+
+  # Gnome
+  # services.xserver.desktopManager.gnome.enable = true;
+
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+  };
+
+
+  services.gnome.gnome-keyring.enable = true;
+
+  security.polkit.enable = true;
 
   security.pam.services.swaylock = {
     text = ''
@@ -131,7 +163,8 @@
   users.users.david = {
     isNormalUser = true;
     description = "David James McCorrie";
-    extraGroups = ["networkmanager" "wheel" "dialout" "tty" "video" "kvm" "docker"];
+    extraGroups = ["networkmanager" "dialout" "plugdev" "whireshark" "wheel"
+                    "tty" "video" "kvm" "docker" "libvirtd"];
     packages = with pkgs; [
       #  thunderbird
     ];
@@ -144,7 +177,10 @@
     };
   };
 
+  machshev.applyUdevRules = true;
+
   virtualisation.docker.enable = true;
+  virtualisation.libvirtd.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -185,14 +221,6 @@
   };
 
   services.dbus.enable = true;
-  xdg.portal = {
-    enable = true;
-    wlr.enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
-  };
-
 
   environment.sessionVariables = {
     POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";

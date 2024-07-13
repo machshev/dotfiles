@@ -8,6 +8,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    machshev = {
+      url = "git+ssh://git@github.com/machshev/devpkgs-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -16,11 +21,12 @@
     ...
   } @ inputs: {
     nixosConfigurations = {
-      default = nixpkgs.lib.nixosSystem {
+      machshev = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          ./hosts/default/configuration.nix
+          ./hosts/machshev/configuration.nix
           inputs.home-manager.nixosModules.default
+          inputs.machshev.nixosModules.machshev
         ];
       };
     };
