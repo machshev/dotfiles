@@ -24,7 +24,7 @@
       machshev = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
         modules = [
-          ./hosts/machshev/configuration.nix
+          ./nixos/hosts/machshev/configuration.nix
           inputs.home-manager.nixosModules.default
           inputs.machshev.nixosModules.machshev
         ];

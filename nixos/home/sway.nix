@@ -1,6 +1,6 @@
 {
   config,
-  pkgsbar,
+  pkgs,
   ...
 }: {
   home.packages = with pkgs; [
@@ -27,6 +27,6 @@
     # TODO: Split these out
     nwg-displays
     nwg-bar
-    nwg-panel
+    #nwg-panel
   ];
 }

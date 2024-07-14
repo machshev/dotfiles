@@ -70,7 +70,7 @@
   services.xserver.videoDrivers = ["nvidia"];
 
   nixpkgs.config.nvidia.acceptLicense = true;
-  programs.sway.extraOptions = [ "--unsupported-gpu" ];
+  programs.sway.extraOptions = ["--unsupported-gpu"];
 
   hardware.nvidia = {
     modesetting.enable = true;
@@ -85,7 +85,6 @@
 
     package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
   };
-
 
   # X11
   services.xserver.enable = true;
@@ -107,7 +106,6 @@
     enable = true;
     wrapperFeatures.gtk = true;
   };
-
 
   services.gnome.gnome-keyring.enable = true;
 
@@ -163,8 +161,18 @@
   users.users.david = {
     isNormalUser = true;
     description = "David James McCorrie";
-    extraGroups = ["networkmanager" "dialout" "plugdev" "whireshark" "wheel"
-                    "tty" "video" "kvm" "docker" "libvirtd"];
+    extraGroups = [
+      "networkmanager"
+      "dialout"
+      "plugdev"
+      "whireshark"
+      "wheel"
+      "tty"
+      "video"
+      "kvm"
+      "docker"
+      "libvirtd"
+    ];
     packages = with pkgs; [
       #  thunderbird
     ];

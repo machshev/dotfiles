@@ -4,9 +4,10 @@
   ...
 }: {
   imports = [
-    ./hyperland.nix
-    ./term.nix
-    ./dev.nix
+    ../../home/sway.nix
+    ../../home/hyperland.nix
+    ../../home/term.nix
+    ../../home/dev.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -38,7 +39,7 @@
   nixpkgs = {
     config = {
       allowUnfree = true;
-      allowUnfreePredicate = (_: true);
+      allowUnfreePredicate = _: true;
     };
   };
 
