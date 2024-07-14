@@ -1,5 +1,0 @@
-- name: Install Stow in macOS
-  community.general.homebrew:
-    name:
-      - stow
-    state: present

@@ -1,7 +1,0 @@
----
-- name: QEMU
-  become: true
-  package:
-    name:
-      - qemu
-    state: present
