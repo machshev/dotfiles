@@ -13,6 +13,7 @@
     wl-clipboard
     wofi
     xclip
+    xdg-user-dirs
     xdg-desktop-portal-gtk
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr

@@ -5,16 +5,15 @@ Session.vim
 \.git
 \.gitignore
 
-^/roles
 ^/hosts
-^/deps
+^/home
+^/config
 
 ^/README.md
-^/bootstrap.yml
-^/requirements.yml
-^/ansible.cfg
 ^/Vagrantfile
 ^/install
 
 ^/\.stowrc
 ^/\.vagrant
+^/\.flake.nix
+^/\.flake.lock
