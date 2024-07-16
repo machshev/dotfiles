@@ -3,7 +3,7 @@
     blueman
     brightnessctl
     dunst
-    nautilus
+    gnome.nautilus
     pavucontrol
     playerctl
     swayidle
