@@ -1,7 +1,7 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   # Required because the intel GPU isn't supported well, does it work with the
   # latest?
-  boot.kernelPackages = pkgs.linuxPackages_6_9;
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_9;
 
   hardware.opengl = {
     enable = true;

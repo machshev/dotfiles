@@ -49,6 +49,7 @@
   nixpkgs.config = {
     permittedInsecurePackages = [
       "segger-jlink-qt4-796s"
+      "segger-jlink-qt4-794l"
     ];
     segger-jlink.acceptLicense = true;
   };

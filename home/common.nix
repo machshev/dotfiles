@@ -5,6 +5,7 @@
 }: {
   imports = [
     ./dev.nix
+    ./desktop-common.nix
     ./hyperland.nix
     ./internet.nix
     ./office.nix
@@ -38,7 +39,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    cheese
+    gnome.cheese
     gimp
     inkscape
     blender
