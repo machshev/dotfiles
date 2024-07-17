@@ -79,6 +79,8 @@
     pulseview
     picotool
 
+    binwalk
+
     # Programmers
     #segger-ozone
     openssl.dev

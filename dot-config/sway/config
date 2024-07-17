@@ -48,6 +48,7 @@ input "16700:8467:Dell_KB216_Wired_Keyboard" {
 
 output eDP-1 pos 1920 0 res --custom 1344x840@60Hz
 output 'BNQ BenQ GL2760 W4G01988019' pos 0 0 res 1920x1080@60Hz
+output DP-5 res 1920x1080@60Hz
 
 workspace 1 output eDP-1
 workspace 2 output DP-1
@@ -227,6 +228,7 @@ bar swaybar_command waybar
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
+exec --no-startup-id mako
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet &
 exec_always nitrogen --restore

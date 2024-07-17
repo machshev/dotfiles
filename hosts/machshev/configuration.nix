@@ -16,6 +16,7 @@
     ../../config/input.nix
     ../../config/locals.nix
     ../../config/networking-common.nix
+    ../../config/wol.nix
     ../../config/nix.nix
     ../../config/security.nix
   ];

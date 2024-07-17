@@ -17,8 +17,6 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  networking.interfaces.enp3s0.wakeOnLan.enable = true;
-
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.tailscale.enable = true;
