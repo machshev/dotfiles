@@ -5,6 +5,8 @@ Session.vim
 \.git
 \.gitignore
 
+flake.nix
+flake.lock
 ^/hosts
 ^/home
 ^/config
