@@ -89,5 +89,4 @@
     v4l-utils
     vlc
   ];
-
 }

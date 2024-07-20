@@ -39,6 +39,10 @@
     meslo-lgs-nf
   ];
 
+  services.devmon.enable = true;
+  services.gvfs.enable = true;
+  services.udisks2.enable = true;
+
   # Here because it needs to be installed as a system package at the moment
   # until I can work out how to install it via homemanager. Perhaps use a
   # devshell instead.
