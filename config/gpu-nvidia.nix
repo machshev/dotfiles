@@ -3,7 +3,6 @@
   services.xserver.videoDrivers = lib.mkDefault ["intel" "nvidia"];
   hardware.opengl = {
     enable = true;
-    driSupport = true;
     driSupport32Bit = true;
     extraPackages = with pkgs; [ vaapiVdpau ];
   };

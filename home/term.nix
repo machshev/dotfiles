@@ -18,6 +18,8 @@
     iftop
     procs
     fd
+    dysk
+    killall
     strace
     ltrace
     lsof
@@ -35,6 +37,7 @@
     # file searching and manipulation
     fzf
     jq
+    jless
     yq-go
     bat
     delta
@@ -85,6 +88,5 @@
     socat
     nmap
     ipcalc
-    wireshark
   ];
 }

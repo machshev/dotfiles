@@ -11,6 +11,9 @@
     # Asm
     asm-lsp
 
+    # WASM
+    wabt
+
     # Lua
     lua-language-server
 
@@ -79,7 +82,15 @@
     pulseview
     picotool
 
+    # Reverse Engineering
     binwalk
+    teehee
+    ghidra
+    radare2
+    cutter
+
+    # Security
+    wireshark
 
     # Programmers
     #segger-ozone
