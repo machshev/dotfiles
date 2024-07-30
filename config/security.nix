@@ -1,6 +1,7 @@
 {...}: {
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.gdm.enableGnomeKeyring = true;
+  security.pam.services.gdm-password.enableGnomeKeyring = true;
   programs.seahorse.enable = true;
 
   security.polkit.enable = true;
