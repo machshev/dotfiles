@@ -10,6 +10,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   hardware.enableRedistributableFirmware = true;
+  hardware.enableAllFirmware = true;
 
   fileSystems = {
     "/".options = ["compress=zstd"];
