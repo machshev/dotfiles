@@ -240,6 +240,7 @@ bar swaybar_command waybar
 exec --no-startup-id mako
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet &
+exec --no-startup-id /run/current-system/sw/libexec/polkit-gnome-authentication-agent-1 &
 exec_always nitrogen --restore
 
 ## Screenshots
