@@ -11,6 +11,7 @@
     ./office.nix
     ./sway.nix
     ./term.nix
+    ./cad.nix
   ];
 
   home.stateVersion = "24.05"; # Please read the comment before changing.
@@ -40,9 +41,6 @@
   # environment.
   home.packages = with pkgs; [
     gnome.cheese
-    gimp
-    inkscape
-    blender
   ];
 
   # Let Home Manager install and manage itself.

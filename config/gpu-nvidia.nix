@@ -1,10 +1,15 @@
-{lib, pkgs, config, ...}: {
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}: {
   # environment.systemPackages = [ nvidia-offload ];
   services.xserver.videoDrivers = lib.mkDefault ["intel" "nvidia"];
   hardware.opengl = {
     enable = true;
     driSupport32Bit = true;
-    extraPackages = with pkgs; [ vaapiVdpau ];
+    extraPackages = with pkgs; [vaapiVdpau];
   };
 
   nixpkgs.config.nvidia.acceptLicense = true;

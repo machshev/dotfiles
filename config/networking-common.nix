@@ -2,7 +2,7 @@
   networking.networkmanager.enable = true;
 
   # Disable this service as it doesn't appear to be doing anything useful and on
-    # the latest Nixos updates it prevents boot
+  # the latest Nixos updates it prevents boot
   systemd.services.NetworkManager-wait-online.enable = false;
 
   environment.systemPackages = with pkgs; [
