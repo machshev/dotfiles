@@ -37,6 +37,8 @@
     font-awesome
     google-fonts
     meslo-lgs-nf
+    corefonts
+    vistafonts
   ];
 
   services.devmon.enable = true;
