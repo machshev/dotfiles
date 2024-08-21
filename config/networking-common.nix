@@ -10,13 +10,15 @@
     networkmanagerapplet
   ];
 
-  # List services that you want to enable:
+  services.resolved.enable = true;
+  networking.useNetworkd = true;
+  networking.nftables.enable = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
+  networking.nameservers = [ "1.1.1.1" "8.8.8.8" ];
+
+  # List services that you want to enable:
+  # networking.firewall.allowedTCPPorts = [];
+  # networking.firewall.allowedUDPPorts = [];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;

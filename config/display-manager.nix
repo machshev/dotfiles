@@ -41,6 +41,10 @@
     wlroots
     xwayland
     wlr-randr
+    vulkan-tools
+    vulkan-validation-layers
+    vulkan-loader
+    vulkan-tools-lunarg
     qt5.qtwayland
     qt6.qmake
     qt6.qtwayland
