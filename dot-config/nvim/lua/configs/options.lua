@@ -27,7 +27,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 
 vim.opt.textwidth = 80
-vim.opt.autoindent = true
+vim.opt.autoindent = false  -- use treesitter indent
 vim.opt.smartindent = false -- use treesitter indent
 vim.opt.breakindent = true
 

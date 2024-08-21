@@ -51,7 +51,17 @@ return {
         lsp_plugin.bashls.setup({ capabilities = capabilities })
         lsp_plugin.yamlls.setup({ capabilities = capabilities })
 
+        -- Nix
         lsp_plugin.nil_ls.setup({ capabilities = capabilities })
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "nix",
+            callback = function()
+                vim.opt_local.shiftwidth = 2
+                vim.opt_local.tabstop = 2
+                vim.opt_local.softtabstop = 2
+            end
+        })
+
         lsp_plugin.veridian.setup({ capabilities = capabilities })
 
         lsp_plugin.ruff.setup({ capabilities = capabilities })
