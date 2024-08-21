@@ -4,8 +4,10 @@
     brightnessctl
     dunst
     gnome.nautilus
+    grim
     pavucontrol
     playerctl
+    slurp
     swayidle
     swaylock
     tailscale-systray
@@ -13,10 +15,9 @@
     wl-clipboard
     wofi
     xclip
-    xdg-user-dirs
-    xdg-desktop-portal-gtk
     xdg-desktop-portal-gtk
     xdg-desktop-portal-wlr
+    xdg-user-dirs
     xdg-utils
     ydotool
 

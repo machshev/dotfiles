@@ -60,10 +60,8 @@
     dutree
     feh
     grex
-    grim
     ranger
     skim
-    slurp
 
     # docs
     tealdeer

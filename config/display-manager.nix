@@ -7,6 +7,7 @@
     enable = true;
     wlr.enable = true;
     extraPortals = [
+      pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
     ];
   };
@@ -18,8 +19,8 @@
   services.xserver.displayManager.gdm.wayland = true;
 
   # Hyprland
-  programs.hyprland.enable = true;
-  programs.hyprland.xwayland.enable = true;
+  # programs.hyprland.enable = true;
+  # programs.hyprland.xwayland.enable = true;
 
   # Sway
   programs.sway = {
@@ -61,8 +62,8 @@
     SDL_VIDEODRIVER = "wayland";
     WLR_NO_HARDWARE_CURSORS = "1";
     WLR_RENDERER = "vulkan";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-    XDG_SESSION_DESKTOP = "Hyprland";
+    XDG_CURRENT_DESKTOP = "sway";
+    XDG_SESSION_DESKTOP = "sway";
     XDG_SESSION_TYPE = "wayland";
     _JAVA_AWT_WM_NONREPARENTING = "1";
   };
