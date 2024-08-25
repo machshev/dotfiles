@@ -1,3 +1,4 @@
 .cargo/registry
 .cargo/.package-cache
+.local/
 result

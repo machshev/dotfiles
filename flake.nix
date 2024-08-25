@@ -29,6 +29,14 @@
           inputs.machshev.nixosModules.machshev
         ];
       };
+      machshev-laptop = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        modules = [
+          ./hosts/machshev-laptop/configuration.nix
+          inputs.home-manager.nixosModules.default
+          inputs.machshev.nixosModules.machshev
+        ];
+      };
     };
     formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
   };
