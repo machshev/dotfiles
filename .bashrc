@@ -104,11 +104,12 @@ alias gbdm='git branch --merged | grep -v "(^\*|master|main|dev)" | xargs git br
 alias gA="clean; git add -A; gs"
 alias gu="clean; git add -u; gs"
 
-alias gcv="clean; git commit -m --verify"
-alias gc="clean; git commit -m"
-alias gca="clean; git commit --amend"
-alias gcnv="clean; git commit --no-verify -m"
-alias gcanv="clean; git commit --no-verify --amend"
+alias gc="clean; git commit -s -m"
+alias gca="clean; git commit -s --amend"
+alias gcv="gc --verify"
+alias gcnv="gc --no-verify"
+alias gcav="gca --verify"
+alias gcanv="gca --no-verify"
 alias gcane="gca --no-edit"
 
 alias gco='git checkout'

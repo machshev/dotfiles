@@ -5,6 +5,7 @@
     # Common
     gnumake
     git
+    git-interactive-rebase-tool
     typos-lsp
     gh
     direnv
@@ -18,6 +19,7 @@
 
     # Lua
     lua-language-server
+    stylua
 
     # Rust
     rustc
@@ -58,6 +60,7 @@
 
     # Shell
     shellcheck
+    shfmt
     nodePackages.bash-language-server
 
     # ansible
