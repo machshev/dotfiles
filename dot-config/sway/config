@@ -214,11 +214,12 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
+set $mode_system System: (l)ock, (e) logout, (s)uspend, (h)ibernate, (r)eboot, (S)hutdown, (R) UEFI
 mode "$mode_system" {
     bindsym l exec $lock, mode "default"
     bindsym e exit
     bindsym s exec --no-startup-id systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
