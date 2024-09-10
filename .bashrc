@@ -28,7 +28,7 @@ shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 if [ -x /usr/bin/lesspipe ]; then
-	eval "$(SHELL=/bin/sh lesspipe)"
+    eval "$(SHELL=/bin/sh lesspipe)"
 fi
 
 export CLICOLOR=1
@@ -41,30 +41,30 @@ esac
 
 # Source the git bash completion file
 if [ -f ~/.git-completion.bash ]; then
-	source ~/.git-completion.bash
-	source ~/.git-prompt.sh
+    source ~/.git-completion.bash
+    source ~/.git-prompt.sh
 fi
 
 export PROMPT_COMMAND="history -a"
 
 # enable color support of ls
 if [ -x /usr/bin/dircolors ]; then
-	if [ -r "$HOME/.dircolors" ]; then
-		eval "$(dircolors -b ~/.dircolors)"
-	else
-		eval "$(dircolors -b)"
-	fi
+    if [ -r "$HOME/.dircolors" ]; then
+        eval "$(dircolors -b ~/.dircolors)"
+    else
+        eval "$(dircolors -b)"
+    fi
 fi
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-	if [ -f /usr/share/bash-completion/bash_completion ]; then
-		source /usr/share/bash-completion/bash_completion
-	elif [ -f /etc/bash_completion ]; then
-		source /etc/bash_completion
-	fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        source /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        source /etc/bash_completion
+    fi
 fi
 
 alias SS="sudo env HOME=\"$HOME\" bash"
@@ -167,21 +167,21 @@ alias cdgt='pushd `git rev-parse --show-toplevel`; s'
 alias r='ranger'
 
 function is_linux() {
-	uname | grep -iq linux
+    uname | grep -iq linux
 }
 
 function is_wsl() {
-	uname -a | grep -iq microsoft
+    uname -a | grep -iq microsoft
 }
 
 # Persist ssh session across shells in WSL
 if is_wsl && keychain --quiet; then
-	eval "$(keychain --quiet --eval id_rsa)"
+    eval "$(keychain --quiet --eval id_rsa)"
 fi
 
 if is_linux; then
-	alias ls='ls -A --color=auto --group-directories-first --time-style=long-iso --human-readable -v'
-	alias ll='ls -l'
+    alias ls='ls -A --color=auto --group-directories-first --time-style=long-iso --human-readable -v'
+    alias ll='ls -l'
 fi
 
 # ls shorthands
@@ -200,11 +200,11 @@ unset GREP_OPTIONS
 alias td='pushd $(mktemp -d)'
 
 if is_linux; then
-	if is_wsl; then
-		alias o='wslview'
-	else
-		alias o='xdg-open'
-	fi
+    if is_wsl; then
+        alias o='wslview'
+    else
+        alias o='xdg-open'
+    fi
 fi
 
 # pylint
@@ -231,16 +231,17 @@ alias clm="lmstat -a | grep --color=never \"Users of|\$(whoami)\" | grep -B1 \$(
 
 # python
 alias pvea=". ./.venv/bin/activate"
+alias a="nix develop \$DEV_FLAKE"
 
 # Go
 alias gta="go test ./..."
 
 # Use bash-completion, if available
 [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] &&
-	. /usr/share/bash-completion/bash_completion
+    . /usr/share/bash-completion/bash_completion
 
 if [ -f "$HOME/.iterm2_shell_integration.bash" ]; then
-	source "$HOME/.iterm2_shell_integration.bash"
+    source "$HOME/.iterm2_shell_integration.bash"
 fi
 
 # shellcheck disable=SC1090
@@ -286,21 +287,21 @@ complete -F _complete_alias gb-delete-local
 
 # cd alias
 if command -v zoxide >/dev/null; then
-	eval "$(zoxide init bash)"
-	alias cd='z'
+    eval "$(zoxide init bash)"
+    alias cd='z'
 fi
 
 # rust powered utils
 if command -v eza >/dev/null; then
-	alias ls="eza -g"
-	alias x='eza'
-	alias tree='eza --tree'
+    alias ls="eza -g"
+    alias x='eza'
+    alias tree='eza --tree'
 fi
 
 if command -v hyperfine >/dev/null; then
-	alias bench='hyperfine'
-	alias top='btm'
-	alias htop='btm'
+    alias bench='hyperfine'
+    alias top='btm'
+    alias htop='btm'
 fi
 
 if command -v dust >/dev/null; then alias du='dust'; fi
@@ -310,98 +311,98 @@ if command -v tokei >/dev/null; then alias cloc='tokei'; fi
 if command -v procs >/dev/null; then alias ps='procs'; fi
 
 function reload() {
-	export OLD_PS1="$PS1"
-	# shellcheck disable=SC1090
-	source "${HOME}/.bashrc"
-	export PS1="$OLD_PS1"
+    export OLD_PS1="$PS1"
+    # shellcheck disable=SC1090
+    source "${HOME}/.bashrc"
+    export PS1="$OLD_PS1"
 }
 
 # export PS1="[\t] \h:\W\\$ "
 
 function gb-rename-local-and-origin-remote() {
-	if [[ -z "$1" ]]; then
-		echo "New branch name is missing"
-		return 1
-	fi
+    if [[ -z "$1" ]]; then
+        echo "New branch name is missing"
+        return 1
+    fi
 
-	CURRENT_BRANCH="$(gbc)"
-	NEW_BRANCH="${1}"
+    CURRENT_BRANCH="$(gbc)"
+    NEW_BRANCH="${1}"
 
-	heading "Renaming current branch [${CURRENT_BRANCH}] to [${NEW_BRANCH}]"
+    heading "Renaming current branch [${CURRENT_BRANCH}] to [${NEW_BRANCH}]"
 
-	echo "Renaming local branch..."
-	git branch -m "${NEW_BRANCH}" || exit 1
-	echo "Rename the remote branch..."
-	git push origin ":${CURRENT_BRANCH}" "${NEW_BRANCH}" || exit 1
-	echo "Reset the upstream tracking branch"
-	git push origin -u "${NEW_BRANCH}" || exit 1
-	echo
-	echo "Branch successfully renamed"
+    echo "Renaming local branch..."
+    git branch -m "${NEW_BRANCH}" || exit 1
+    echo "Rename the remote branch..."
+    git push origin ":${CURRENT_BRANCH}" "${NEW_BRANCH}" || exit 1
+    echo "Reset the upstream tracking branch"
+    git push origin -u "${NEW_BRANCH}" || exit 1
+    echo
+    echo "Branch successfully renamed"
 }
 
 function rsed() {
-	while IFS= read -r -d '' file; do
-		sed -e "${2}" "${file}" | diff -u "${file}" - | colordiff
-	done < <(find . -type f -name "${1}" -print0)
+    while IFS= read -r -d '' file; do
+        sed -e "${2}" "${file}" | diff -u "${file}" - | colordiff
+    done < <(find . -type f -name "${1}" -print0)
 }
 
 function rsed-do() {
-	while IFS= read -r -d '' file; do
-		sed -i "${2}" "${file}"
-	done < <(find . -type f -name "${1}" -print0)
+    while IFS= read -r -d '' file; do
+        sed -i "${2}" "${file}"
+    done < <(find . -type f -name "${1}" -print0)
 }
 
 function edit-src() {
-	edit "$(which "${1}")"
+    edit "$(which "${1}")"
 }
 
 function debug-python() {
-	local cmd="${1}"
-	shift
-	ipython --pdb "$(which "${cmd}")" -- "$@"
+    local cmd="${1}"
+    shift
+    ipython --pdb "$(which "${cmd}")" -- "$@"
 }
 
 function stats-line() {
-	echo -e "\e[1m${1}:\e[21m \e[${3}m${2}\e[0m"
+    echo -e "\e[1m${1}:\e[21m \e[${3}m${2}\e[0m"
 }
 
 function where() {
-	stats-line "VEnv" "${VIRTUAL_ENV}" 31
-	stats-line "Dir" "${PWD}" 32
-	stats-line "pushd" "$(dirs)" 34
+    stats-line "VEnv" "${VIRTUAL_ENV}" 31
+    stats-line "Dir" "${PWD}" 32
+    stats-line "pushd" "$(dirs)" 34
 
-	stats-line "git branch"
-	git branch
+    stats-line "git branch"
+    git branch
 
-	stats-line "git changes"
-	git status -s
+    stats-line "git changes"
+    git status -s
 }
 
 function weather() {
-	local location=$1
-	if [ -z "${location}" ]; then
-		location="Fordham"
-	fi
-	curl "v2.wttr.in/${location}"
+    local location=$1
+    if [ -z "${location}" ]; then
+        location="Fordham"
+    fi
+    curl "v2.wttr.in/${location}"
 }
 
 function use-rclone-here() {
-	RCLONE_CONFIG="$PWD/rclone.conf"
-	export RCLONE_CONFIG
+    RCLONE_CONFIG="$PWD/rclone.conf"
+    export RCLONE_CONFIG
 
-	rclone config file
+    rclone config file
 }
 
 # SSH
 SSH_ENV=$HOME/.ssh/environment
 
 function start_agent {
-	echo "Initialising new SSH agent..."
-	ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
-	echo succeeded
-	chmod 600 "${SSH_ENV}"
-	source "${SSH_ENV}" >/dev/null
-	ssh-add
+    echo "Initialising new SSH agent..."
+    ssh-agent | sed 's/^echo/#echo/' >"${SSH_ENV}"
+    echo succeeded
+    chmod 600 "${SSH_ENV}"
+    source "${SSH_ENV}" >/dev/null
+    ssh-add
 }
 
 # Source SSH settings, if applicable
@@ -410,35 +411,35 @@ function start_agent {
 
 # configure tmux
 if [ -f ~/.tmux/tmux_bash_completion ]; then
-	source "$HOME/.tmux/tmux_bash_completion"
+    source "$HOME/.tmux/tmux_bash_completion"
 fi
 
 # opam configuration
 if [ -f "$HOME/.opam/opam-init/init.sh" ]; then
-	source "$HOME/.opam/opam-init/init.sh" >/dev/null 2>/dev/null
+    source "$HOME/.opam/opam-init/init.sh" >/dev/null 2>/dev/null
 fi
 
 # configure fzf
 if command -v fzf >/dev/null; then
-	export FZF_COMPLETION_TRIGGER='~~'
-	export FZF_COMPLETION_OPTS='--border --info=inline'
-	export FZF_DEFAULT_COMMAND="rg --files --hidden"
-	export FZF_ALT_C_COMMAND="fd --type d"
+    export FZF_COMPLETION_TRIGGER='~~'
+    export FZF_COMPLETION_OPTS='--border --info=inline'
+    export FZF_DEFAULT_COMMAND="rg --files --hidden"
+    export FZF_ALT_C_COMMAND="fd --type d"
 
-	_fzf_compgen_path() {
-		rg --files --hidden
-	}
+    _fzf_compgen_path() {
+        rg --files --hidden
+    }
 
-	_fzf_compgen_dir() {
-		fd --type d --hidden --folow --exclude ".git" . "$1"
-	}
+    _fzf_compgen_dir() {
+        fd --type d --hidden --folow --exclude ".git" . "$1"
+    }
 
-	# _fzf_setup_completion path npm
+    # _fzf_setup_completion path npm
 fi
 
 eval "$(starship init bash)"
 eval "$(direnv hook bash)"
 
 if [ -f "$HOME/.cargo/env" ]; then
-	. "$HOME/.cargo/env"
+    . "$HOME/.cargo/env"
 fi

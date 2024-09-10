@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Quick and dirty checker to run the OT CI static analysis checks locally
+# without failing CI multiple times to get check the changes
+
+# Enter the repo top level
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+function check_output() {
+    eval $2
+    local PASS="$?"
+
+    echo "-----------------------------"
+
+    if [[ "$PASS" == "0" ]]; then
+        echo -e "\e[32mPASSED $1\e[0m"
+    else
+        echo -e "\e[31mFAILED $1\e[0m"
+        exit 2
+    fi
+
+    echo "-----------------------------"
+
+}
+
+check_output 'Licence Check' "bazel run '//quality:license_check'"
+check_output 'Python Lint Check' "ci/scripts/python-lint.sh master"
+check_output 'Whitespace' "ci/scripts/whitespace.sh master"
+check_output 'mypy' "ci/scripts/mypy.sh"

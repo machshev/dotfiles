@@ -1,9 +1,9 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   networking.networkmanager.enable = true;
 
   # Disable this service as it doesn't appear to be doing anything useful and on
   # the latest Nixos updates it prevents boot
-  systemd.services.NetworkManager-wait-online.enable = false;
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
 
   environment.systemPackages = with pkgs; [
     networkmanager
