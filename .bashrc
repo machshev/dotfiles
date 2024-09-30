@@ -112,6 +112,16 @@ alias gcav="gca --verify"
 alias gcanv="gca --no-verify"
 alias gcane="gca --no-edit"
 
+function gcf {
+    if [[ -z "$1" ]]; then
+        echo "Commit hash to fixup is missing"
+        return 1
+    fi
+
+    git commit --fixup="$1"
+    git rebase -i --autosquash "$1"~1
+}
+
 alias gco='git checkout'
 alias gpu="git pull --rebase"
 alias gp="git push --follow-tags"

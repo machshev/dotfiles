@@ -11,7 +11,8 @@ return {
             'mfussenegger/nvim-dap',
         },
         config = function()
-            local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
+            local extension_path = vim.env.HOME
+                .. '/.vscode/extensions/vadimcn.vscode-lldb-1.10.0/'
             local codelldb_path = extension_path .. 'adapter/codelldb'
             local liblldb_path = extension_path .. 'lldb/lib/liblldb'
 
@@ -35,13 +36,13 @@ return {
                         )
                         vim.keymap.set(
                             'n',
-                            '<leader>cr<space>',
+                            '<leader>cR<space>',
                             rt.runnables.runnables,
                             { buffer = bufnr, desc = 'Rust: Runnables' }
                         )
                         vim.keymap.set(
                             'n',
-                            '<leader>crd',
+                            '<leader>cRd',
                             rt.debuggables.debuggables,
                             { buffer = bufnr, desc = 'Rust: Debuggables' }
                         )
@@ -63,7 +64,7 @@ return {
         optional = true,
         opts = {
             defaults = {
-                ['<leader>cr'] = { name = '+Rust' },
+                ['<leader>cR'] = { name = '+Rust' },
             },
         },
     },
