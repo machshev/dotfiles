@@ -10,6 +10,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../../config/boot.nix
+    ../../config/zfs.nix
     ../../config/common.nix
     ../../config/display-manager.nix
     ../../config/gpu-nvidia.nix
@@ -22,6 +23,7 @@
   ];
 
   networking.hostName = "machshev";
+  networking.hostId = "3eee9f68";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.david = {

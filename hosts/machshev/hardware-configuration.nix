@@ -17,29 +17,30 @@
   boot.kernelModules = ["kvm-intel"];
   boot.extraModulePackages = [];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/56d38bdf-71d8-4bbb-8435-4ef5ca2599bd";
-    fsType = "btrfs";
-    options = ["subvol=root"];
-  };
+  fileSystems."/" =
+    { device = "zpool/root";
+      fsType = "zfs";
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/56d38bdf-71d8-4bbb-8435-4ef5ca2599bd";
-    fsType = "btrfs";
-    options = ["subvol=home"];
-  };
+  fileSystems."/nix" =
+    { device = "zpool/nix";
+      fsType = "zfs";
+    };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/56d38bdf-71d8-4bbb-8435-4ef5ca2599bd";
-    fsType = "btrfs";
-    options = ["subvol=nix"];
-  };
+  fileSystems."/var" =
+    { device = "zpool/var";
+      fsType = "zfs";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/2416-7DBD";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
-  };
+  fileSystems."/home" =
+    { device = "zpool/home";
+      fsType = "zfs";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/7054-94F4";
+      fsType = "vfat";
+    };
 
   swapDevices = [];
 
