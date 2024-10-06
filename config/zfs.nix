@@ -3,10 +3,11 @@
   pkgs,
   ...
 }: {
-  boot.kernelPackages = pkgs.zfs.latestCompatibleLinuxPackages;
-  boot.supportedFilesystems = [ "zfs" ];
-  boot.initrd.supportedFilesystems = [ "zfs" ];
-  boot.initrd.kernelModules = [ "zfs" ];
+  boot.kernelPackages = pkgs.linuxPackages_6_10;
+
+  boot.supportedFilesystems = ["zfs"];
+  boot.initrd.supportedFilesystems = ["zfs"];
+  boot.initrd.kernelModules = ["zfs"];
 
   boot.zfs.forceImportAll = false;
   boot.zfs.forceImportRoot = true;
@@ -17,4 +18,3 @@
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
 }
-
