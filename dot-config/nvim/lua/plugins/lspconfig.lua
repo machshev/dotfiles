@@ -64,41 +64,24 @@ return {
 
         lsp_plugin.veridian.setup({ capabilities = capabilities })
 
+        -- Python
         lsp_plugin.ruff.setup({ capabilities = capabilities })
-        lsp_plugin.pyright.setup({ capabilities = capabilities })
-        -- lsp_plugin.pylyzer.setup({ capabilities = capabilities })
-        -- lsp_plugin.pylsp.setup({
-        --     capabilities = capabilities,
-        --     flags = {
-        --         debounce_text_changes = 200,
-        --     },
-        --     settings = {
-        --         pylsp = {
-        --             plugins = {
-        --                 -- formatter options
-        --                 black = { enabled = false },
-        --                 autopep8 = { enabled = false },
-        --                 yapf = { enabled = false },
-        --                 ruff = { enabled = false }, -- use ruff-lsp
-        --                 -- linter options
-        --                 pylint = { enabled = false, executable = 'pylint' },
-        --                 pyflakes = { enabled = false },
-        --                 pycodestyle = { enabled = false },
-        --                 -- type checker
-        --                 pylsp_mypy = { enabled = true },
-        --                 -- auto-completion options
-        --                 jedi_completion = { enabled = false, fuzzy = true },
-        --                 -- import sorting
-        --                 pyls_isort = { enabled = false, profile = 'black' },
-        --             },
-        --         },
-        --     },
-        -- })
+        lsp_plugin.pylyzer.setup({ capabilities = capabilities })
+        vim.api.nvim_create_autocmd('FileType', {
+            pattern = 'py',
+            callback = function()
+                vim.opt_local.shiftwidth = 4
+                vim.opt_local.tabstop = 4
+                vim.opt_local.softtabstop = 4
+                vim.opt_local.textwidth = 97
+            end,
+        })
 
         lsp_plugin.clangd.setup({
             capabilities = capabilities,
             filetypes = { 'c', 'cpp' },
         })
+
         lsp_plugin.rust_analyzer.setup({ capabilities = capabilities })
 
         lsp_plugin.bufls.setup({

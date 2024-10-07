@@ -13,13 +13,14 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Enable sound with pipewire.
+  sound.enable = false; # not using Alsa system
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # jack.enable = true;
+    jack.enable = true;
   };
 
   services.pipewire.extraConfig.pipewire."92-low-latency" = {
@@ -28,7 +29,7 @@
       "default.clock.allowed-rates" = [48000 44100 88200 96000 192000];
       "default.clock.quantum" = 32;
       "default.clock.min-quantum" = 32;
-      "default.clock.max-quantum" = 32;
+      "default.clock.max-quantum" = 250;
     };
   };
 
@@ -36,7 +37,7 @@
     "context.properties" = [
       {
         name = "libpipewire-module-protocol-pulse";
-        args = {};
+        args = { };
       }
     ];
     "pulse.properties" = {
@@ -52,19 +53,19 @@
     };
   };
 
-  services.pipewire.wireplumber.extraConfig."10-bluez" = {
-    "monitor.bluez.properties" = {
-      "bluez5.enable-sbc-xq" = true;
-      "bluez5.enable-msbc" = true;
-      "bluez5.enable-hw-volume" = true;
-      "bluez5.roles" = [
-        "hsp_hs"
-        "hsp_ag"
-        "hfp_hf"
-        "hfp_ag"
-      ];
-    };
-  };
+  # services.pipewire.wireplumber.extraConfig."10-bluez" = {
+  #   "monitor.bluez.properties" = {
+  #     "bluez5.enable-sbc-xq" = true;
+  #     "bluez5.enable-msbc" = true;
+  #     "bluez5.enable-hw-volume" = true;
+  #     "bluez5.roles" = [
+  #       "hsp_hs"
+  #       "hsp_ag"
+  #       "hfp_hf"
+  #       "hfp_ag"
+  #     ];
+  #   };
+  # };
 
   virtualisation.docker.enable = true;
   virtualisation.libvirtd.enable = true;

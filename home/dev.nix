@@ -42,10 +42,9 @@
     conky
 
     # Python
-    python312Packages.python-lsp-server
-    python312Packages.pylsp-mypy
-    python312Packages.pylsp-rope
+    uv
     ruff
+    pylyzer
 
     # Nix
     nil
