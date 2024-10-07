@@ -29,7 +29,7 @@
       "default.clock.allowed-rates" = [48000 44100 88200 96000 192000];
       "default.clock.quantum" = 32;
       "default.clock.min-quantum" = 32;
-      "default.clock.max-quantum" = 250;
+      "default.clock.max-quantum" = 32;
     };
   };
 

@@ -66,7 +66,7 @@ return {
 
         -- Python
         lsp_plugin.ruff.setup({ capabilities = capabilities })
-        lsp_plugin.pylyzer.setup({ capabilities = capabilities })
+        lsp_plugin.pyright.setup({ capabilities = capabilities })
         vim.api.nvim_create_autocmd('FileType', {
             pattern = 'py',
             callback = function()

@@ -44,7 +44,7 @@
     # Python
     uv
     ruff
-    pylyzer
+    pyright
 
     # Nix
     nil
