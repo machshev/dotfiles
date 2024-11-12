@@ -178,3 +178,9 @@ vim.keymap.set(
     '<C-\\><C-n>',
     { desc = 'Exit terminal mode' }
 )
+vim.keymap.set(
+    't',
+    '<c-w>',
+    '<C-\\><C-N><C-w>',
+    { desc = 'Exit terminal mode and move window' }
+)

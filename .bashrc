@@ -218,8 +218,7 @@ if is_linux; then
 fi
 
 # pylint
-alias pylint='pylint --output-format=colorized --rcfile=~/.pylintrc'
-alias allpep8="find . -name '*.py' -exec autopep8 -iaaaaaaaa {} \;"
+alias pytestd='pytest --pdb --pdbcls=IPython.terminal.debugger:TerminalPdb -s'
 
 # Quick way to serve files in HTTP from the local dir
 alias webs-py='python3 -m http.server'
@@ -369,6 +368,8 @@ function edit-src() {
 function debug-python() {
     local cmd="${1}"
     shift
+    if command -v ipdb >/dev/null; then export PYTHONBREAKPOINT="ipdb.set_trace"; fi
+    if command -v ipdb3 >/dev/null; then export PYTHONBREAKPOINT="ipdb.set_trace"; fi
     ipython --pdb "$(which "${cmd}")" -- "$@"
 }
 
