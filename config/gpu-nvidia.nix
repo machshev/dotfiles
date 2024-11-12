@@ -4,6 +4,9 @@
   config,
   ...
 }: {
+  # nvidia legacy drivers don't build on 6.10
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_9;
+
   # environment.systemPackages = [ nvidia-offload ];
   services.xserver.videoDrivers = lib.mkDefault ["intel" "nvidia"];
   hardware.opengl = {
