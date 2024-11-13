@@ -10,7 +10,6 @@
     slurp
     swayidle
     swaylock
-    tailscale-systray
     waybar
     wl-clipboard
     wofi
