@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  boot.kernelPackages = pkgs.linuxPackages_6_10;
-
   fileSystems = {
     "/".options = ["compress=zstd"];
     "/home".options = ["compress=zstd"];

@@ -1,9 +1,7 @@
 {
   config,
-  pkgs,
   ...
 }: {
-  boot.kernelPackages = pkgs.linuxPackages_6_10;
 
   boot.supportedFilesystems = ["zfs"];
   boot.initrd.supportedFilesystems = ["zfs"];

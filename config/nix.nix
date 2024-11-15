@@ -1,7 +1,4 @@
 {
-  config,
-  pkgs,
-  inputs,
   ...
 }: {
   nixpkgs.config.allowUnfree = true;
@@ -14,5 +11,15 @@
     "https://nix-cache.lowrisc.org/public/"
   ];
 
-  nix.gc.automatic = true;
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  # nix.settings.auto-optimise-store = true;
+  nix.optimise = {
+    automatic = true;
+    dates = [ "weekly" ];
+  };
 }
