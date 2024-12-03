@@ -1,8 +1,4 @@
-{
-  config,
-  ...
-}: {
-
+{config, ...}: {
   boot.supportedFilesystems = ["zfs"];
   boot.initrd.supportedFilesystems = ["zfs"];
   boot.initrd.kernelModules = ["zfs"];

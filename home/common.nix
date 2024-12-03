@@ -6,7 +6,6 @@
   imports = [
     ./dev.nix
     ./desktop-common.nix
-    ./hyperland.nix
     ./internet.nix
     ./office.nix
     ./sway.nix
@@ -14,7 +13,7 @@
     ./cad.nix
   ];
 
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   nixpkgs.config = lib.mkForce {
     allowUnfree = true;
@@ -40,7 +39,7 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-    gnome.cheese
+    cheese
   ];
 
   # Let Home Manager install and manage itself.

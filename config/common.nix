@@ -1,4 +1,8 @@
-{pkgs, inputs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.direnv.enable = true;
 
   services.printing = {
@@ -26,7 +30,6 @@
   hardware.bluetooth.powerOnBoot = true;
 
   # Enable sound with pipewire.
-  sound.enable = false; # not using Alsa system
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

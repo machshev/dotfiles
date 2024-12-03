@@ -29,7 +29,6 @@
     # Go
     go
     buf
-    buf-language-server
 
     # Zig
     zig

@@ -1,6 +1,4 @@
-{
-  ...
-}: {
+{...}: {
   nixpkgs.config.allowUnfree = true;
 
   # Enable flakes + new nix command
@@ -20,6 +18,6 @@
   # nix.settings.auto-optimise-store = true;
   nix.optimise = {
     automatic = true;
-    dates = [ "weekly" ];
+    dates = ["weekly"];
   };
 }
