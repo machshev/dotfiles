@@ -77,6 +77,7 @@ alias emacsserver="emacs --bg-daemon=server; psgrep emacs"
 alias emacs-profile="emacs -Q -l ${HOME}/emacs/profile.el -f profile-dotemacs"
 alias edit="\${EDITOR}"
 
+# TODO: Replicate this
 # git config
 #git config --global core.pager "less --LONG-PROMPT --tabs=3 --quit-at-eof --quit-if-one-screen --tilde --jump-target=3 --ignore-case --status-column"
 git config --global core.pager "delta"
@@ -84,97 +85,6 @@ git config --global interactive.diffFilter "delta --color-only"
 git config --global delta.features "side-by-side line-numbers decorations"
 git config --global delta.whitespace-error-style "22 reverse"
 git config --global sequence.editor "interactive-rebase-tool"
-
-# git shorthands
-alias gme="git config user.name"
-alias gou="git config remote.origin.url"
-
-alias gs="git status -b --show-stash -M --ahead-behind"
-alias ga="git add"
-
-alias gb='git branch'
-alias gbc='git rev-parse --abbrev-ref HEAD'
-alias gb-list-merged="git for-each-ref --format='%(creatordate:short) %(authorname) %(refname:short)' -s --sort=authorname --merged origin/master"
-alias gb-list-not-merged="git for-each-ref --format='%(creatordate:short) %(authorname) %(refname:short)' -s --sort=authorname --no-merged origin/master"
-alias gblm="gb-list-merged"
-alias gblnm="gb-list-not-merged"
-alias gbs='git show-branch'
-alias gbdm='git branch --merged | grep -v "(^\*|master|main|dev)" | xargs git branch -d'
-
-alias gA="clean; git add -A; gs"
-alias gu="clean; git add -u; gs"
-
-alias gc="clean; git commit -s -m"
-alias gca="clean; git commit -s --amend"
-alias gcv="clean; git commit -s --verify -m"
-alias gcnv="clean; git commit -s --no-verify -m"
-alias gcav="gca --verify"
-alias gcanv="gca --no-verify"
-alias gcane="gca --no-edit"
-
-function gcf {
-    if [[ -z "$1" ]]; then
-        echo "Commit hash to fixup is missing"
-        return 1
-    fi
-
-    git commit --fixup="$1"
-    git rebase -i --autosquash "$1"~1
-}
-
-alias gco='git checkout'
-alias gpu="git pull --rebase"
-alias gp="git push --follow-tags"
-alias gP="git push -f"
-
-alias gd="git diff"
-alias gdl="gd HEAD~1"
-alias gds="git diff --staged"
-alias gdt="git difftool"
-alias gdtl="gdtool HEAD~1"
-alias gdts="git difftool --staged"
-
-alias gg='git grep'
-alias gk='gitk --all'
-alias gl="glog -10"
-alias glog='git log --pretty=format:"%C(yellow)%h %C(cyan)%<(24)%ad %Cgreen%an%C(auto)%d%Creset: %s" --date=local'
-alias gm="git merge --ff-only --no-verify"
-alias gmt="git mergetool"
-
-alias gsta="git stash apply"
-alias gstcl="git stash clear"
-alias gstd="git stash drop"
-alias gstl='git stash list --pretty=format:"%C(red)%<(10)%gd %C(yellow)%h %C(cyan)%<(13)%cr %Cgreen%an%C(auto)%d%Creset: %s"'
-alias gsts="git stash show"
-
-alias gr="git rebase"
-alias gri="git rebase -i"
-alias gra="gr --abort"
-alias grc="gr --continue"
-
-alias grp="git remote prune origin"
-
-alias gb-delete-remote="git push origin --delete"
-alias gb-delete-local="git branch -d"
-
-alias dirs='dirs -p -v'
-alias s='echo -e "\e[33m${PWD}\e[0m"; ls'
-alias ..="cd ..; s"
-alias ...="cd ../..; s"
-alias ....="cd ../../..; s"
-alias .....="cd ../../../..; s"
-alias ......="cd ../../../../..; s"
-alias .......="cd ../../../../../..; s"
-alias ........="cd ../../../../../../..; s"
-alias .........="cd ../../../../../../../..; s"
-alias ..........="cd ../../../../../../../../..; s"
-alias ...........="cd ../../../../../../../../../..; s"
-
-alias cdve='pushd ${VIRTUAL_ENV}; s'
-alias cdch='pushd ${CONFIG_HOME}; s'
-alias cdgt='pushd `git rev-parse --show-toplevel`; s'
-
-alias r='ranger'
 
 function is_linux() {
     uname | grep -iq linux
@@ -193,13 +103,6 @@ if is_linux; then
     alias ls='ls -A --color=auto --group-directories-first --time-style=long-iso --human-readable -v'
     alias ll='ls -l'
 fi
-
-# ls shorthands
-alias l="ls"
-alias ll="ls -lh"
-alias la="ls -a"
-alias lla="ls -lha"
-alias left='ls -t -1'
 
 # grep shorthands
 alias hg='history | grep'

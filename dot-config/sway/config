@@ -19,6 +19,7 @@ set $right l
 
 # Tool preferences
 set $term alacritty
+set $browser firefox
 set $lock 'swaylock -f -c 000000'
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
 #set $term cosmic-term
@@ -68,7 +69,7 @@ workspace 4 output $home_monitor
 ### Key bindings
     # Start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+b exec firefox
+    bindsym $mod+n exec $browser
     bindsym $mod+p exec logos
 
     # Kill focused window
@@ -158,7 +159,7 @@ workspace 4 output $home_monitor
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
-    bindsym $mod+z splith
+    bindsym $mod+b splith
     bindsym $mod+v splitv
 
     # Switch the current container between different layout styles
