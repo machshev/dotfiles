@@ -84,7 +84,7 @@ return {
 
         lsp_plugin.rust_analyzer.setup({ capabilities = capabilities })
 
-        lsp_plugin.bufls.setup({
+        lsp_plugin.buf_ls.setup({
             capabilities = capabilities,
             cmd = { 'bufls', 'serve' },
             filetypes = { 'proto' },
