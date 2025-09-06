@@ -2,6 +2,10 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
+-- Execute .nvim.lua in project dir
+vim.opt.exrc = true
+vim.opt.secure = true -- Restrict to safe commands
+
 vim.opt.expandtab = true
 vim.opt.smarttab = true
 vim.opt.shiftround = true

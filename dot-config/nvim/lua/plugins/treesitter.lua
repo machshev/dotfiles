@@ -23,6 +23,7 @@ return {
                     'mermaid',
                     'nix',
                     'norg',
+                    'org',
                     'python',
                     'regex',
                     'ron',
